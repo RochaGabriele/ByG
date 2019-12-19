@@ -1,12 +1,122 @@
 <?php
 require_once("Conect.php");
-require_once("./modelo/divDois.php");
-require_once("./modelo/divQuatro.php");
-require_once("./modelo/divSeis.php");
-require_once("./modelo/descricao.php");
-require_once("./modelo/padrao.php");
+require_once("../modelo/divDois.php");
+require_once("../modelo/divQuatro.php");
+require_once("../modelo/divSeis.php");
+require_once("../modelo/descricao.php");
+require_once("../modelo/padrao.php");
+require_once("../modelo/posts.php");
 class Solo{    
 
+	  function selecionarPosts(){
+            try{
+                $conexao = new Conexao();
+                $cmd = $conexao->getConexao()->prepare("SELECT * FROM posts;");
+                $cmd->execute();
+                $resultado = $cmd->fetchAll(PDO::FETCH_CLASS, "posts");
+                return $resultado;
+            }catch(PDOException $e){
+                echo "Erro no banco: {$e->getMessage()}";
+            }catch(Exception $e){
+                echo "Erro geral: {$e->getMessage()}";
+            }
+        }
+        
+        function inserirPosts($posts){
+            try{
+                $conexao = new Conexao();
+                $texto = $posts->getPostagem();
+                $subtexto = $posts->getSubtext();
+                $name = $posts->getNamePost();
+                $type = $posts->getTipoPost();
+                $bin = $posts->getBinPost();
+                $cmd = $conexao->getConexao()->prepare("INSERT INTO posts(postagem,subtext,namePost,tipoPost,binPost) VALUES(:p,:s,:n,:t,:b);");
+                $cmd->bindParam("p", $texto);
+                $cmd->bindParam("s", $subtexto);
+                $cmd->bindParam('n',$name);
+				$cmd->bindParam('t',$type);
+				$cmd->bindParam('b',$bin);
+                if($cmd->execute()){
+                    $conexao->fecharConexao();
+                    return true;
+                }else{
+                    $conexao->fecharConexao();
+                    return false;
+                }
+            }catch(PDOException $e){
+                echo "Erro do banco: {$e->getMessage()}";
+                return false;
+            }catch(Exception $e){
+                echo "Erro geral: {$e->getMessage()}";
+                return false;
+            }
+        }
+        
+        
+        function remover($id){
+            try{
+                $conexao = new Conexao();
+                $cmd = $conexao->getConexao()->prepare("DELETE FROM posts WHERE id=:id;");
+                $cmd->bindParam("id", $id);
+                if($cmd->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
+            }catch(PDOException $e){
+                echo "Erro de PDO: {$e->getMessage()}";
+                return false;
+            }catch(Exception $e){
+                echo "Erro geral: {$e->getMessage()}";
+                return false;
+            }
+        }
+        
+        
+        function update($id, $posts){
+            try{
+                $conexao = new Conexao();
+                $postagem = $posts->getPostagem();
+                $subtext = $posts->getSubtext();
+                $name = $posts->getNamePost();
+                $type = $posts->getTipoPost();
+                $bin = $posts->getBinPost();
+                $cmd = $conexao->getConexao()->prepare("UPDATE posts SET postagem = :p, subtext = :s, namePost = :n, tipoPost = :t, binPost = :b WHERE id=:id;");
+                $cmd->bindParam("id", $id);
+                $cmd->bindParam("p", $postagem); 
+                $cmd->bindParam("s", $subtext); 
+                $cmd->bindParam('n',$name);
+				$cmd->bindParam('t',$type);
+				$cmd->bindParam('b',$bin);         
+				if($cmd->execute()){
+					return true;
+				}else{
+					return false;
+				}
+            }catch(PDOException $e){
+                echo "Erro no banco: {$e->getMessage()}";
+            }catch(Exception $e){
+                echo "Erro geral: {$e->getMessage()}";
+            }
+        }
+        
+        
+        function selecionarPid($id){
+            try{
+                $conexao = new Conexao();	
+                $cmd = $conexao->getConexao()->prepare("SELECT * FROM posts WHERE id=:id;");
+                $cmd->bindParam("id", $id);
+                $cmd->execute();
+                $resultado = $cmd->fetchAll(PDO::FETCH_CLASS, "posts");
+                return $resultado;
+            }catch(PDOException $e){
+                echo "Erro no banco: {$e->getMessage()}";
+            }catch(Exception $e){
+                echo "Erro geral: {$e->getMessage()}";
+            }
+        }
+        
+	  
 	  function selecionarPadrao(){
             try{
                 $conexao = new Conexao();

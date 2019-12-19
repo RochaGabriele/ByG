@@ -4,7 +4,7 @@ class Conexao{
     function __construct(){
         $host = "localhost"; // Onde o SGBD está?
         $user =  "root"; // Quem irá conectar?
-        $pwd = "clei45?ilto"; // Senha do usuário
+        $pwd = "123456"; // Senha do usuário
         $bd = "fini"; // Base de dados usada
         try{
             $this->setConexao(new PDO("mysql:host={$host};dbname={$bd}",$user,$pwd));

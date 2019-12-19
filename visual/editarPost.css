@@ -1,0 +1,159 @@
+.tpainel {
+			font-size: 600%;
+		  }
+		  
+		.dropdown-submenu {
+		  position: relative;
+		}
+
+		.dropdown-submenu .dropdown-menu {
+		  left: 0%;
+		  margin-top: -1px;
+		}
+		.dropdown{
+			margin-left: 10%; 
+			margin-right: 10%;
+		}
+
+		.blasa{
+			background-color: white;
+			margin-top: 15%;
+			padding-top: 3%;
+			margin-right: 2%;
+			padding-bottom: 3%;
+			float: right;
+			width: 50%;
+		}
+		
+		.dropdown-submenu{
+			margin-top: 5px;
+		}
+		
+
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		.bg_video{
+			position: fixed; 
+			right: 0; 
+			bottom: 0;
+			min-width: 100%; 
+			min-height: 100%;
+			width: auto; 
+			height: auto; 
+			z-index: -1000;
+			background: url(preto.jpg) no-repeat;
+			background-size: cover; 
+		}
+		.body{
+			padding:20px;
+			background: rgba(255,255,255,0.9);
+			margin: 30% auto 20px auto;
+			max-width: 960px;
+			border-radius: 10px;
+
+		}
+		.lad{
+			margin-top: 11%;
+			margin-left: 2%;
+			float: left;
+		}
+		.dropdown-menu{
+		  	width: 100%; 
+		}
+		@media screen and (max-width: 360px) and (min-width: 60px) {
+			  .tpainel {
+				font-size: 280%;
+				margin-left: 8%;
+				margin-right: 3%;
+				padding-left: 10px;
+				padding-right: 10px;
+				width: 100%;
+			  }
+			  
+			  div.blasa{
+				margin-right: -0.15%;
+				width: 100%;
+				margin-top: 10%;
+			  }
+			  
+			  div.lad{
+			  	margin-top: 40%;
+			  }
+			  ul.dropdown-menu{
+		  			width: 135%; 
+		  			margin-left: -25px;
+				}
+		  }
+		
+		@media screen and (max-width: 550px) and (min-width: 361px) {
+		  .tpainel {
+			font-size: 300%;
+			margin-left: 15%;
+			margin-right: 15%;
+			padding-left: 10px;
+			padding-right: 10px;
+			width: 100%;
+		  }
+		  
+		  div.blasa{
+			margin-right: 10%;
+			width: 80%;
+			margin-top: 10%;
+		  }
+		  div.lad{
+		  	margin-top: 20%;
+		  }
+		  ul.dropdown-menu{
+  			width: 120%; 
+  			margin-left: -22px;
+		  }
+		}
+		
+		@media screen and (max-width: 805px)and (min-width: 551px) {
+		  .tpainel {
+			font-size: 400%;
+			padding-left: 10px;
+			padding-right: 10px;
+			width: 100%;
+		  }
+		  
+		  div.blasa{
+			margin-right: 10%;
+			width: 80%;
+			margin-top: 5%;
+				
+		  }
+		  div.lad{
+		  	margin-top: 10%;
+		  	margin-left: 10%;	
+		  }
+		  
+		}
+		
+		@media screen and (max-width: 1090px)and (min-width: 806px) {
+		  .tpainel {
+			font-size: 600%;
+			padding-left: 10px;
+			padding-right: 10px;
+			margin-left: 35%;
+			margin-right: 35%;
+			width: 100%;
+		  }
+		  
+		  div.blasa{
+			margin-right: 10%;
+			margin-left: 10%;
+			width: 80%;
+			margin-top: 5%;
+				
+		  }
+		  div.lad{
+		  	margin-top: 0%;
+		  	
+		  }
+		  
+		}
